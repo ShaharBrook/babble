@@ -1,0 +1,366 @@
+/*------------- global -------------*/
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+/*------------- header -------------*/
+body > header:first-of-type {
+    height: 15%;
+    background-color: #353744;
+}
+body > header:first-of-type > h1 {
+    display: none;
+}
+body > header:first-of-type > img {
+    margin: 1.5vh;
+    height: 80%;
+}
+/*------------- nav -------------*/
+nav {
+    height: 85%;
+    width: 18%;
+    float: left;
+    background-color: #61D290;
+}
+/*------------- main header -------------*/
+header.main-header {
+    width: 82%;
+    float: right;
+    background-color: #F6F6F6;
+}
+
+header.main-header > h1 {
+    color: #3B3B3B;
+    margin: 1vh 0;
+    margin-left: 3.5vw;
+    font-size: 3vh;
+    font-weight: normal;
+}
+dl {
+    margin: 1vh 0;     
+    margin-left: 3.5vw;
+    padding: 0;
+}
+dt, dd {
+    display: block;
+    margin: 0.5vh 0;
+    height: 2vh;
+}
+dd {
+    font-size: 2vh;
+}
+dt {
+    padding: 0;
+}
+dt > img {
+    float: left;
+    height: 100%;
+}
+/*------------- main -------------*/
+main {
+    height: 61.5%;
+    width: 82%;
+    float: right;
+    background-color: #F6F6F6;
+    word-wrap:break-word;
+}
+/*------------- messages -------------*/
+/*messages list*/
+main > ol {
+    height: 88%;
+    overflow-y: auto;
+    clear: both;
+    list-style:none;
+    margin: 0;
+    margin-left: 2.5vw;
+    padding: 0;
+}
+/*styling the messages*/
+li {
+    clear: left; /*each message in a new line*/
+    margin-top: 1vh; /*space between the messages*/
+}
+/*avatar*/
+li > img {
+    float: left;
+    border-radius: 50%; /*making the image round*/
+    height: 2.4rem;
+    width: 2.4rem;
+}
+/*message author*/
+.message > cite {
+    font-weight: bold;
+}
+/*message time*/
+.message > time {
+    font-size: 0.8rem;
+    margin-left: 2vmin;
+    color: #999999;
+}
+/*message content*/
+.message > p {
+    margin: 0;
+    margin-top: 0.25rem; /*space from the message metadata*/
+}
+/*message*/
+.message {
+    max-width: 90%;
+    float: left;
+    background-color: #FFFFFF;
+    border: solid 0.05rem #DADADA;
+    border-radius: 2vmin;
+    margin-left: 0.8vw;
+    padding: 0.2rem 0.4rem;
+}
+.message:hover, .message:focus{
+    background-color: #EBEDEC;
+    outline: none;
+}
+/*delete icon*/
+button.delete-icon {
+    /*display: none;*/
+    float: right;
+    background-image: url("../images/x-icon.png");
+    background-repeat: no-repeat;
+    background-size: 0.5rem 0.5rem;
+    padding: 0;
+    margin: 0.25rem;
+    outline: none;
+    border: none;
+    height: 0.5rem;
+    width: 0.5rem;
+}
+/*
+.message:hover > button.delete-icon, .message:focus > button.delete-icon {
+    display: initial;
+}
+*/
+button.delete-icon:hover, button.delete-icon:focus {
+    /*display: initial;*/
+    outline: 0.02rem solid #7D9FD6 !important;
+}
+/*------------- footer -------------*/
+footer {
+    position: relative;
+    float: left;
+    width: 82%;
+    background-color: #FFFFFF;
+    border-top: solid 0.1vh #D9D9D9;
+}
+footer form {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+footer textarea {
+    box-sizing: border-box;
+    height: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    margin: 0;
+    padding: 7px;
+    border: none;
+    resize: none;
+}
+footer textarea:focus {
+    outline: none;
+}
+footer button {
+    float: right;
+    height: 9vh;
+    width: 9vh;
+    padding: 0;
+    margin: 0 1vw;
+    border-radius: 4.5vh;
+    background-image: url("../images/submit.png");
+    background-size: cover;
+    outline:none;
+}
+footer button:focus, footer button:hover {
+    border: 0.25vh solid black;
+}
+/*the login section*/
+section.login {
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 50vh;
+}
+section.login form {
+    background-color: #F9F9F9;
+    padding: 1.7rem 1.5rem;
+}
+section.login h1 {
+    color: #32333B;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+section.login label {
+    color:#616161;
+    float: left;
+    clear: left;
+}
+section.login input {
+    width: 16.2rem;
+    float: right;
+    clear: right;
+    border: solid 0.03rem #D9D9D9;
+    font-weight: bold;
+    padding: 0.4rem;
+    margin-left: 0.4rem;
+    border-radius: 0.5rem;
+}
+section.login input:focus {
+    outline: none;
+    border-color: blue;
+}
+section.login button {
+    margin-top: 1rem;
+    float: right;
+}
+section.login button:first-of-type {
+    float: right;
+    clear: both;
+    background-color: #78D351;
+    color: white;
+    padding: 0.1rem 1.3rem;
+    border: none;
+}
+section.login label:first-of-type {
+    margin-top: 0.3rem;
+}
+section.login label:nth-of-type(2) {
+    margin-top: 1.85rem;
+}
+section.login input:nth-of-type(2) {
+    margin-top: 1.1rem;
+}
+section.login button:nth-of-type(2) {
+    margin-right: 0.4rem;
+    background-color: #C1C1C1;
+    color: #21282A;
+    padding: 0.1rem 0.4rem;
+    border: none;
+}
+
+/*------------- mobile design -------------*/
+
+@media screen and (min-width: 320px) {
+    /*------------- main header -------------*/
+    header.main-header {
+        height: 10%;
+    }
+    header.main-header > h1 {
+        float: left;
+        margin-top: 3.5vh;
+        margin-left: 3.5vw;
+        margin-bottom: 0;
+    }
+    dl {
+        margin: 0;    
+        float: right;
+        height: 10vh;   
+    }
+    dt, dd {
+        height: 3vmin;
+        display: inline-block;
+        margin: 0;
+    }
+    dd {
+        font-size: 3vmin;
+        margin-right: 2vmin;
+    }
+    dd:nth-of-type(2) {
+        margin-right: 4vmin;
+    }
+}
+
+
+/*@media screen and (max-width: 1023px), screen and (max-height: 626px)*/
+
+@media screen and (max-width: 638px) and (min-width: 320px), screen and (max-height: 626px) {
+    nav {
+        width: 0;
+    }
+    header.main-header, main, footer {
+        width: 100%;
+    }
+    
+    
+    section.login h1 {
+        font-size: 5vh;
+        padding: 0;
+        margin-bottom: 1vh;
+    }
+    section.login form {
+        position: relative;
+        padding: 7vh 10vw;
+        margin-top: 2vh;
+        height: 77vh;
+        width: 65vw;
+    }
+    section.login input {
+        padding: 2vh 2vw;
+        font-size: 4vh;
+        border-radius: 1.5vh;
+        border: 0.2vh solid #D9D9D9;
+        width: 45vw;
+        margin: 1vh 0 !important;
+        float: left;
+        clear: both;
+    }
+    section.login label {
+        margin: 4vh 0 1vh 0 !important;
+        font-size: 4vh;
+    }
+    section.login button {
+        padding: 0 2vw !important;
+        margin: 25vh 0 0 0 !important;
+        font-size: 3.5vmin;
+        height: 5vmin;
+    }
+    section.login button:nth-of-type(2) {
+        margin-right: 2vw !important;
+    }
+}
+
+/*------------- global classes -------------*/
+.flex-container-y {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.flex-container-x {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.flex-container-x-start {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+}
+.btn-no-style {
+    background-color: inherit;
+    border: none;
+}
+.clickable {
+    cursor: pointer; 
+    cursor: hand;
+}
+.invisible {
+    display: none;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <title>Vegans - Babble</title>
+</head>
+<body>
+    <div style="display: none">
+    <!-- <div> -->
+        height: <span id="h"></span>
+        width: <span id="w"></span>
+        h2 width: <span id="x"></span>
+    </div>
+    <header class="flex-container-y">
+        <h1>Babble talk freely.</h1>
+        <img src="images/logo.png" alt="logo" />
+    </header>
+    <nav></nav>
+    <header class="main-header">
+        <h1>Vegans</h1>
+        <dl class="flex-container-y">
+            <dt><img src="images/messages.png" alt="" /></dt>
+            <dd>0</dd>
+            <dt><img src="images/person.png" alt="" /></dt>
+            <dd>0</dd>
+        </dl>
+    </header>
+    <main>
+        <ol>
+            <!--
+            <li class="flex-container-x-start">
+                <img src="images/square.png" alt="" />
+                <container autofocus tabindex="2" class="message">
+                    <cite>Shahar Brook</cite><time datetime="UNIX">14:53</time>
+                    <button class="delete-icon clickable btn-no-style" tabindex="2"></button>
+                    <p>hi every one!</p>
+                </container>
+            </li>
+            <li class="flex-container-x-start">
+                <img src="images/square.png" alt="" />
+                <container tabindex="2" class="message">
+                    <cite>Shahar Brook</cite><time datetime="UNIX">14:53</time>
+                    <button class="delete-icon clickable btn-no-style" tabindex="2"></button>
+                    <p>Hi every one! What is up with you? Hi every one! What is up with you?</p>
+                </container>
+            </li>
+            <li class="flex-container-x-start">
+                <img src="images/square.png" alt="" />
+                <container tabindex="2" class="message">
+                    <cite>Shahar Brook</cite><time datetime="UNIX">14:53</time>
+                    <button class="delete-icon clickable btn-no-style" tabindex="2"></button>
+                    <p>Hi every one! What is up with you? Hi every one! What is up with you?</p>
+                </container>
+            </li>
+            <li class="flex-container-x-start">
+                <img src="images/square.png" alt="" />
+                <container autofocus tabindex="2" class="message">
+                    <cite>Shahar Brook</cite><time datetime="UNIX">14:53</time>
+                    <button class="delete-icon clickable btn-no-style" tabindex="2"></button>
+                    <p>Hi every one!</p>
+                </container>
+            </li>
+            <li class="flex-container-x-start">
+                <img src="images/square.png" alt="" />
+                <container autofocus tabindex="2" class="message">
+                    <cite>Shahar Brook</cite><time datetime="UNIX">14:53</time>
+                    <button class="delete-icon clickable btn-no-style" tabindex="2"></button>
+                    <p>Hi</p>
+                </container>
+            </li>
+            -->
+        </ol>
+    </main>
+    <footer class="flex-container-y">
+        <form action="http://localhost:9000" method="POST" id="userform" class="flex-container-y flex-container-x">
+            <textarea tabindex="-1" aria-label="message" name="message"></textarea>
+            <button aria-label="submit" tabindex="-1" class="btn-no-style clickable"></button>
+        </form>
+    </footer>
+    <span class="invisible" tabindex="2" onFocus="document.querySelector('[autofocus]').focus()"></span>    
+    <section class="login flex-container-y flex-container-x">
+        <form action="http://localhost:9000" method="POST">
+            <h1>Who are you?</h1>
+            <label for="fullname">Full name:</label>
+		    <input id="fullname" type="text" name="name" tabindex="1" class="autofocus"/>
+            <label for="email">Email:</label>
+		    <input id="email" type="email" name="email" tabindex="1" />
+            <button type="submit" tabindex="1" class="clickable" onclick="Babble.F.Save();">Save</button>
+            <button type="submit" tabindex="1" class="clickable" onclick="Babble.F.StayAnonymous();">Stay Anonymous</button>
+            <!--<span class="invisible" tabindex="1" onFocus="document.querySelector('.autofocus').focus()"></span>-->
+        </form>
+    </section>
+    <script src="scripts/main.js"></script>    
+</body>
+</html>
