@@ -51,7 +51,7 @@ window.Babble = {
     },
     F: {
         Save: function () {
-            var form = document.querySelector('Section--login form');
+            var form = document.querySelector('.Section--login form');
             var data = Babble.F.serializeToJS(form);
             Babble.register(data);
             //Babble.F.SendMessages();
@@ -157,7 +157,7 @@ window.Babble = {
                 e.preventDefault();
                 Babble.F.logout();
             });
-            document.querySelector('Section--login').style.display = 'none';
+            document.querySelector('.Section--login').style.display = 'none';
             document.querySelector('footer textarea').removeAttribute('tabindex');
             document.querySelector('footer button').removeAttribute('tabindex');
             console.log('start send messages!');
