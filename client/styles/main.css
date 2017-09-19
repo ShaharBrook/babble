@@ -186,7 +186,7 @@ footer button:focus, footer button:hover {
     border: 0.25vh solid black;
 }
 /*the login section*/
-Section--login {
+.Section--login {
     top: 0;
     height: 100vh;
     width: 100vw;
@@ -194,22 +194,22 @@ Section--login {
     background-color: rgba(0, 0, 0, 0.5);
     margin-bottom: 50vh;
 }
-Section--login form {
+.Section--login form {
     background-color: #F9F9F9;
     padding: 1.7rem 1.5rem;
 }
-Section--login h1 {
+.Section--login h1 {
     color: #32333B;
     font-weight: normal;
     margin: 0;
     margin-bottom: 1rem;
 }
-Section--login label {
+.Section--login label {
     color:#616161;
     float: left;
     clear: left;
 }
-Section--login input {
+.Section--login input {
     width: 16.2rem;
     float: right;
     clear: right;
@@ -219,15 +219,15 @@ Section--login input {
     margin-left: 0.4rem;
     border-radius: 0.5rem;
 }
-Section--login input:focus {
+.Section--login input:focus {
     outline: none;
     border-color: blue;
 }
-Section--login button {
+.Section--login button {
     margin-top: 1rem;
     float: right;
 }
-Section--login button:first-of-type {
+.Section--login button:first-of-type {
     float: right;
     clear: both;
     background-color: #78D351;
@@ -235,16 +235,16 @@ Section--login button:first-of-type {
     padding: 0.1rem 1.3rem;
     border: none;
 }
-Section--login label:first-of-type {
+.Section--login label:first-of-type {
     margin-top: 0.3rem;
 }
-Section--login label:nth-of-type(2) {
+.Section--login label:nth-of-type(2) {
     margin-top: 1.85rem;
 }
-Section--login input:nth-of-type(2) {
+.Section--login input:nth-of-type(2) {
     margin-top: 1.1rem;
 }
-Section--login button:nth-of-type(2) {
+.Section--login button:nth-of-type(2) {
     margin-right: 0.4rem;
     background-color: #C1C1C1;
     color: #21282A;
@@ -296,19 +296,19 @@ Section--login button:nth-of-type(2) {
     }
     
     
-    Section--login h1 {
+    .Section--login h1 {
         font-size: 5vh;
         padding: 0;
         margin-bottom: 1vh;
     }
-    Section--login form {
+    .Section--login form {
         position: relative;
         padding: 7vh 10vw;
         margin-top: 2vh;
         height: 77vh;
         width: 65vw;
     }
-    Section--login input {
+    .Section--login input {
         padding: 2vh 2vw;
         font-size: 4vh;
         border-radius: 1.5vh;
@@ -318,17 +318,17 @@ Section--login button:nth-of-type(2) {
         float: left;
         clear: both;
     }
-    Section--login label {
+    .Section--login label {
         margin: 4vh 0 1vh 0 !important;
         font-size: 4vh;
     }
-    Section--login button {
+    .Section--login button {
         padding: 0 2vw !important;
         margin: 25vh 0 0 0 !important;
         font-size: 3.5vmin;
         height: 5vmin;
     }
-    Section--login button:nth-of-type(2) {
+    .Section--login button:nth-of-type(2) {
         margin-right: 2vw !important;
     }
 }
