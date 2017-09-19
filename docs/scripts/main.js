@@ -12,12 +12,13 @@ window.Babble = {
         Babble.userInfo.name = userInfo.name;
         Babble.userInfo.email = userInfo.email;
         Babble.F.UpdateLS();
+        Babble.F.SendMessages();
         Babble.F.request2({
             method: 'POST',
             action: Babble.F.getAction() + '/register'
         }, function (data) {
             console.log('welcome ' + (userInfo.name == '' ? 'Anonymous' : userInfo.name) + '!');
-            Babble.F.SendMessages();
+            //Babble.F.SendMessages();
         });
     },
     postMessage: function (message, callback) {
