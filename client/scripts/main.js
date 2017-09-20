@@ -77,8 +77,8 @@ window.Babble = {
                 data: data
             }, callback);
         },
-        afterTest: function(data) {
-            console.log('after test: '+JSON.stringify(data));
+        afterTest: function (data) {
+            console.log('after test: ' + JSON.stringify(data));
         },
         logout: function () {
             console.log('logout');
@@ -139,7 +139,7 @@ window.Babble = {
         },
         AfterDelete: function (data) {
             console.log('--after delete');
-            console.log('--after delete: '+JSON.stringify(data));
+            console.log('--after delete: ' + JSON.stringify(data));
         },
         login: function () {
             Babble.F.request2({
@@ -190,8 +190,8 @@ window.Babble = {
             return babble;
         },
         updateStats: function (data) {
-            document.querySelector('.main-header dl > dd:first-of-type').innerHTML = data.messages;
-            document.querySelector('.main-header dl > dd:last-of-type').innerHTML = data.users;
+            document.querySelector('.Header--mainHeader dl > dd:first-of-type').innerHTML = data.messages;
+            document.querySelector('.Header--mainHeader dl > dd:last-of-type').innerHTML = data.users;
         },
         updateStatsPoll: function (data) {
             var stats = data;
@@ -294,88 +294,13 @@ window.Babble = {
                 ol.innerHTML = ol.innerHTML + str;
             }
             Babble.F.DeleteButtons();
-            Babble.F.HandleFocusability();
-        },
-        HandleFocusability: function () {
-            var list = document.querySelectorAll('li container');
-            var isButton = false;
-            window.addEventListener('keyup',function(e) {
-                'use strict';
-                if (e.keyCode === 9) {
-                    if (e.shiftKey) {
-                        if (!isButton) {
-                            //console.log("EXCEPTION!");
-                            //console.log(document.activeElement.querySelector("p").innerHTML);
-                            var after = document.activeElement;
-                            var _before = after.parentElement.nextSibling;
-                            //console.log(_before.nextElementSibling);
-                            if (_before && _before.nextElementSibling && _before.nextElementSibling.querySelector("container")) {
-                                //console.log('next: '+_before.nextElementSibling.querySelector("p").innerHTML);
-                                var before = _before.nextElementSibling.querySelector("container");
-                                if (before) {
-                                    if (before.querySelector("button")) {
-                                        before.querySelector("button").style.display = 'none';
-                                    }
-                                    var btn = after.querySelector("button");
-                                    if (btn) {
-                                        after.blur();
-                                        btn.focus();
-                                    }
-                                }
-                            } else if (_before) {
-                                var before = document.querySelector("main ol li:last-of-type container");
-                                var btn = before.querySelector("button");
-                                if (btn) {
-                                    before.blur();
-                                    btn.focus();
-                                }
-                            }
-                        }
-                        isButton = (document.activeElement.nodeName === 'BUTTON');
-                        //console.log(document.activeElement.querySelector("p").innerHTML);
-
-                    } else {
-                        isButton = (document.activeElement.nodeName === 'BUTTON');
-                        //console.log(document.activeElement.nodeName);
-                    }
-                }
-            }, false);
-            for (var i = 0; i < list.length; i++) {
-                Init(i);
-                list[i].addEventListener('focus', FocusIn(i));
-                if (list[i].querySelector('button')) {
-                    list[i].querySelector('button').addEventListener('focusout', FocusOut(i));
-                }
-                list[i].addEventListener('mouseenter', FocusIn(i));
-                list[i].addEventListener('mouseleave', FocusOut(i));
-            }
-            function SetDisplayToButtonInLi(index, disp) {
-                var li = document.querySelector('li:nth-of-type(' + (index + 1) + ') container');
-                var button = li.querySelector('button');
-                if (button != null) {
-                    button.style.display = disp;
-                }
-            }
-            function Init(i) {
-                SetDisplayToButtonInLi(i, 'none');
-            }
-            function FocusIn(i) {
-                return function () {
-                    SetDisplayToButtonInLi(i, 'initial');
-                }
-            }
-            function FocusOut(i) {
-                return function () {
-                    SetDisplayToButtonInLi(i, 'none');
-                }
-            }
         },
         MessageToString: function (message, isMe, isAnonymous, imgSrc) {
-            var str = '<li class="flex-container-x-start"> '
+            var str = '<li class="u-flexContainerXStart"> '
                 + ' <img src="' + imgSrc + '" alt="" /> '
-                + ' <container tabindex="0" class="message"> '
+                + ' <container tabindex="0" class="Container--message"> '
                 + '  <cite>' + (isAnonymous ? 'Anonymous' : message.name) + '</cite><span class="timestamp" style="display: none;">' + message.timestamp + '</span><time datetime="UNIX">' + Babble.F.parseTime(message.timestamp) + '</time> '
-                + (isMe ? '  <button aria-label="delete message" class="delete-icon clickable btn-no-style"></button> ' : '')
+                + (isMe ? '  <button aria-label="delete message" class="u-visuallyHidden u-focusable delete-icon Button--clickable Button--noStyle"></button> ' : '')
                 + '  <p>' + Babble.F.ParseTextMessage(message.message) + '</p> '
                 + '  <span class="id" style="display: none;">' + message.id + '</span> '
                 + '  <span class="name" style="display: none;">' + message.name + '</span> '
@@ -459,18 +384,20 @@ window.Babble = {
             document.addEventListener('submit', function (e) {
                 e.preventDefault();
             });
-            SetTextArea();
+            SetTextArea3();
+            //SetTextArea2();
             SetDl();
+            SetMessages();
 
             function SetDl() {
                 SetDlHeight();
-                window.addEventListener('resize',SetDlHeight); // window.onresize = SetDlHeight;
+                window.addEventListener('resize', SetDlHeight); // window.onresize = SetDlHeight;
                 function SetDlHeight() {
                     var dl = document.querySelector('dl');
                     var hasClass = (dl.className != '');
                     if (window.matchMedia("(min-width: 320px)").matches) {
                         if (!hasClass) {
-                            dl.className = 'flex-container-y';
+                            dl.className = 'u-flexContainerY';
                         }
                     } else {
                         if (hasClass) {
@@ -479,6 +406,107 @@ window.Babble = {
                     }
                 }
             }
+            function SetMessages() {
+                SetMessagesLayout();
+                window.addEventListener('resize', SetMessagesLayout); // window.onresize = SetDlHeight;
+                function SetMessagesLayout() {
+                    var list = document.querySelectorAll('main ol li');
+                    if (list == null || list.length == 0) return;
+                    var hasClass = (list[0].className != '');
+                    if (window.matchMedia("(min-width: 320px)").matches) {
+                        if (!hasClass) {
+                            for (var i = 0; i < list.length; i++) {
+                                list[i].className = 'u-flexContainerXStart';
+                            }
+                        }
+                    } else {
+                        if (hasClass) {
+                            for (var i = 0; i < list.length; i++) {
+                                list[i].className = '';
+                            }
+                        }
+                    }
+                }
+            }
+            function SetTextArea3() {
+                // Based on: https://alistapart.com/article/expanding-text-areas-made-elegant
+                makeGrowable(document.querySelector('.js-growable'));
+                function makeGrowable(container) {
+                    var area = container.querySelector('textarea');
+                    var clone = container.querySelector('span');
+                    var c=0;
+                    window.addEventListener('load',UpdateTextArea);
+                    area.addEventListener('input', function (e) {
+                        UpdateTextArea();
+                        setTimeout(UpdateTextArea,100);
+                        setTimeout(UpdateTextArea,150);
+                        setTimeout(UpdateTextArea,200);
+                    });
+                    window.addEventListener('resize', function () {
+                        UpdateTextArea();
+                        setTimeout(UpdateTextArea,100);
+                        setTimeout(UpdateTextArea,150);
+                        setTimeout(UpdateTextArea,200);
+                    });
+                    function UpdateTextArea() {
+                        clone.textContent = area.value;
+                        var totalHeight = document.querySelector('body').clientHeight;
+                        var firstHeaderHeight = document.querySelector('body > header').clientHeight;
+                        var mainHeaderHeight = document.querySelector('.Header--mainHeader').clientHeight;
+                        var restHeight = firstHeaderHeight + mainHeaderHeight;
+                        var footerHeight = document.querySelector('footer').clientHeight;
+                        var main = document.querySelector('main');
+                        console.log('counter: '+(c++)+'\n'+
+                            'totalHeight: '+totalHeight+'\n'+
+                            'restHeight: '+restHeight+'\n'+
+                            '- firstHeaderHeight: '+firstHeaderHeight+'\n'+
+                            '- mainHeaderHeight: '+mainHeaderHeight+'\n'+
+                            'mainHeight: '+main.clientHeight+'\n'+
+                            'footerHeight: '+footerHeight+'\n'
+                        );
+                        var expectedHeight = totalHeight - restHeight - footerHeight;
+                        var mic = 0.15; // mainImportanceCoefficient
+                        if (expectedHeight > mic * totalHeight) {
+                            console.log('- T! expectedHeight > mic * totalHeight: '+expectedHeight+' > '+mic+' * '+totalHeight);
+                            SetMaxHeight(300);
+                            main.style.height = (expectedHeight)+'px';
+                        } else {
+                            console.log('- F! expectedHeight > mic * totalHeight: '+expectedHeight+' < '+mic+' * '+totalHeight);
+                            SetMaxHeight((1-mic)*totalHeight-restHeight);
+                            main.style.height = (mic * totalHeight)+'px';
+                        }
+                    }
+                    function SetMaxHeight(valInPixels) {
+                        var val = (valInPixels)+'px';
+                        document.querySelector('.Growable textarea').style.maxHeight = val;
+                        document.querySelector('.Growable pre').style.maxHeight = val;
+                    }
+                }
+            }
+
+            function SetTextArea2() {
+                var area = document.querySelector('textarea');
+                var main = document.querySelector('main');
+                area.addEventListener('input', UpdateHeights, false);
+                window.addEventListener('resize', UpdateHeights);
+                function UpdateHeights() {
+                    var n = max(5, GetRows());
+                    SetHeights(n);
+                }
+                function GetRows() {
+                    return area.value.split(/\r?\n/).length;
+                }
+                function SetHeights(n) {
+                    var textOk = true;
+                    var areaHeight = min(300, 14 + 16 * (n));
+                    var totalHeight = window.document.body.clientHeight;
+                    console.log('totalHeight = ' + totalHeight);
+                    area.style.height = areaHeight + 'px';
+                    main.style.height = (totalHeight * 0.5 - 1.0 * areaHeight) + 'px';
+                }
+            }
+
+
 
             function SetTextArea() {
                 var area = document.querySelector('textarea');
@@ -486,9 +514,8 @@ window.Babble = {
                 var footer = document.querySelector('footer');
                 UpdateHeights();
                 area.addEventListener('input', UpdateHeights, false);
-                window.addEventListener('resize',UpdateHeights); //window.onresize = UpdateHeights;
+                window.addEventListener('resize', UpdateHeights); //window.onresize = UpdateHeights;
                 function UpdateHeights() {
-                    //console.log('update!');
                     var n = max(5, GetRows());
                     SetHeights(n);
                 }
@@ -499,27 +526,19 @@ window.Babble = {
 
                 function SetHeights(n) {
                     //console.log('height: '+window.document.body.clientHeight);
-                    var restHeight = document.querySelector('body > header:first-of-type').clientHeight + document.querySelector('header.main-header').clientHeight;//window.document.body.clientHeight * 0.75;
+                    var restHeight = document.querySelector('body > header:first-of-type').clientHeight + document.querySelector('.Header--mainHeader').clientHeight;//window.document.body.clientHeight * 0.75;
                     var areaHeight = min(300, 14 + 16 * (n));
-                    if (areaHeight + restHeight > 0.8*window.document.body.clientHeight) {
+                    if (areaHeight + restHeight > 0.8 * window.document.body.clientHeight) {
                         //console.log('if!');
-                        main.style.height = 0.15*window.document.body.clientHeight;
+                        main.style.height = 0.15 * window.document.body.clientHeight;
                         //area.style.height = 0.8*window.document.body.clientHeight - restHeight;
                         //console.log('set maxHeight: '+(0.8*window.document.body.clientHeight - restHeight));
-                        area.style.maxHeight = (0.8*window.document.body.clientHeight - restHeight)+'px';
+                        area.style.maxHeight = (0.7 * window.document.body.clientHeight - restHeight) + 'px';
                     } else {
                         //console.log('else!');
                         main.style.height = (window.document.body.clientHeight - restHeight - 1 - areaHeight) + 'px';
                         area.style.height = (14 + 16 * (n)) + 'px';
                     }
-                    /*
-                    console.log(window.document.body.clientHeight+' '+main.style.height);
-                    if (main.style.height*1.0<window.document.body.clientHeight*0.3) {
-                        console.log('if!');
-                        main.style.height = window.document.body.clientHeight*0.3;
-                        area.style.height = window.document.body.clientHeight*0.7 - restHeight;
-                    }
-                    */
                 }
             }
             function max(x, y) { return x > y ? x : y; }

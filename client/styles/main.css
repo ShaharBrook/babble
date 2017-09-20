@@ -27,13 +27,13 @@ nav {
     background-color: #61D290;
 }
 /*------------- main header -------------*/
-header.main-header {
+.Header--mainHeader {
     width: 82%;
     float: right;
     background-color: #F6F6F6;
 }
 
-header.main-header > h1 {
+.Header--mainHeader > h1 {
     color: #3B3B3B;
     margin: 1vh 0;
     margin-left: 3.5vw;
@@ -62,7 +62,9 @@ dt > img {
 }
 /*------------- main -------------*/
 main {
-    height: 61.5%;
+    /*height: 61.5%;*/
+    box-sizing: border-box;
+    padding: 5px 0;
     width: 82%;
     float: right;
     background-color: #F6F6F6;
@@ -71,7 +73,7 @@ main {
 /*------------- messages -------------*/
 /*messages list*/
 main > ol {
-    height: 88%;
+    height: 100%;
     overflow-y: auto;
     clear: both;
     list-style:none;
@@ -85,6 +87,7 @@ li {
     margin-top: 1vh; /*space between the messages*/
 }
 /*avatar*/
+
 li > img {
     float: left;
     border-radius: 50%; /*making the image round*/
@@ -92,23 +95,23 @@ li > img {
     width: 2.4rem;
 }
 /*message author*/
-.message > cite {
+.Container--message > cite {
     font-weight: bold;
 }
 /*message time*/
-.message > time {
+.Container--message > time {
     font-size: 0.8rem;
     margin-left: 2vmin;
     color: #999999;
 }
 /*message content*/
-.message > p {
+.Container--message > p {
     margin: 0;
     margin-top: 0.25rem; /*space from the message metadata*/
 }
 /*message*/
-.message {
-    max-width: 90%;
+.Container--message {
+    max-width: 80%; /* todo - 600px max-width */
     float: left;
     background-color: #FFFFFF;
     border: solid 0.05rem #DADADA;
@@ -116,13 +119,13 @@ li > img {
     margin-left: 0.8vw;
     padding: 0.2rem 0.4rem;
 }
-.message:hover, .message:focus{
+.Container--message:hover, .Container--message:focus{
     background-color: #EBEDEC;
     outline: none;
 }
 /*delete icon*/
+/*
 button.delete-icon {
-    /*display: none;*/
     float: right;
     background-image: url("../images/x-icon.png");
     background-repeat: no-repeat;
@@ -134,18 +137,15 @@ button.delete-icon {
     height: 0.5rem;
     width: 0.5rem;
 }
-/*
-.message:hover > button.delete-icon, .message:focus > button.delete-icon {
-    display: initial;
-}
 */
 button.delete-icon:hover, button.delete-icon:focus {
-    /*display: initial;*/
     outline: 0.02rem solid #7D9FD6 !important;
 }
 /*------------- footer -------------*/
 footer {
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 18%;
     float: left;
     width: 82%;
     background-color: #FFFFFF;
@@ -157,6 +157,41 @@ footer form {
     margin: 0;
     padding: 0;
 }
+
+.Growable {
+	position: relative;
+	/*border: 1px solid;*/
+	/*max-height: 300px;*/
+	overflow: hidden;
+	-webkit-scrollbar: red;
+}
+
+.Growable textarea,
+.Growable pre {
+	margin: 0;
+    padding: 0;
+	/*padding: 7px;*/
+    width: 77vw;
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	padding: 0.5em;
+}
+
+.Growable textarea {
+	width: 100%;
+	resize: none;
+	border: none;
+	
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+	overflow: visible;
+}
+
+/*
 footer textarea {
     box-sizing: border-box;
     height: 100%;
@@ -168,22 +203,23 @@ footer textarea {
     border: none;
     resize: none;
 }
+*/
 footer textarea:focus {
     outline: none;
 }
 footer button {
     float: right;
-    height: 9vh;
-    width: 9vh;
+    height: 1.2rem;
+    width: 1.2rem;
     padding: 0;
-    margin: 0 1vw;
-    border-radius: 4.5vh;
+    margin-left: 1vw;
+    border-radius: 0.6rem;
     background-image: url("../images/submit.png");
     background-size: cover;
     outline:none;
 }
 footer button:focus, footer button:hover {
-    border: 0.25vh solid black;
+    border: 0.05rem solid black;
 }
 /*the login section*/
 .Section--login {
@@ -226,10 +262,10 @@ footer button:focus, footer button:hover {
 .Section--login button {
     margin-top: 1rem;
     float: right;
+    clear: both;
 }
 .Section--login button:first-of-type {
     float: right;
-    clear: both;
     background-color: #78D351;
     color: white;
     padding: 0.1rem 1.3rem;
@@ -253,13 +289,53 @@ footer button:focus, footer button:hover {
 }
 
 /*------------- mobile design -------------*/
+@media screen and (max-width: 319px) {
+    /*login section*/
+    .Section--login h1 {
+        font-size: 5vh;
+        padding: 0;
+        margin-bottom: 1vh;
+    }
+    .Section--login form {
+        position: relative;
+        padding: 7vh 10vw;
+        margin-top: 2vh;
+        height: 77vh;
+        width: 65vw;
+    }
+    .Section--login input {
+        padding: 2vh 2vw;
+        font-size: 4vh;
+        border-radius: 1.5vh;
+        border: 0.2vh solid #D9D9D9;
+        width: 60vw;
+        margin: 1vh 0 !important;
+        float: left;
+        clear: both;
+    }
+    .Section--login label {
+        margin: 4vh 0 1vh 0 !important;
+        font-size: 4vh;
+    }
+    .Section--login button {
+        padding: 0 2vw !important;
+        margin: 1vh 0 0 0 !important;
+        font-size: 3.5vmin;
+        height: 5vmin;
+    }
+    /*messages*/
+    li img, li container {
+        clear: both;
+        margin-top: 1vh;
+    }
+}
 
 @media screen and (min-width: 320px) {
     /*------------- main header -------------*/
-    header.main-header {
+    .Header--mainHeader {
         height: 10%;
     }
-    header.main-header > h1 {
+    .Header--mainHeader > h1 {
         float: left;
         margin-top: 3.5vh;
         margin-left: 3.5vw;
@@ -282,16 +358,32 @@ footer button:focus, footer button:hover {
     dd:nth-of-type(2) {
         margin-right: 4vmin;
     }
+    /*login section*/
+    .Section--login button:nth-of-type(2) {
+        clear: none;
+    }
 }
 
 
 /*@media screen and (max-width: 1023px), screen and (max-height: 626px)*/
+@media screen and (max-width: 638px) and (min-width: 320px) {
+    .Section--login button:nth-of-type(2) {
+        margin-right: 0 !important;
+    }
+}
 
-@media screen and (max-width: 638px) and (min-width: 320px), screen and (max-height: 626px) {
+@media screen and (max-width: 638px) and (min-width: 320px) and (min-height: 627px) {
+    .Section--login button:nth-of-type(2) {
+        margin-right: 2vw !important;
+    }
+}
+
+
+@media screen and (max-width: 638px) and (min-width: 320px) and (max-height: 626px) {
     nav {
         width: 0;
     }
-    header.main-header, main, footer {
+    .Header--mainHeader, main, footer {
         width: 100%;
     }
     
@@ -331,36 +423,77 @@ footer button:focus, footer button:hover {
     .Section--login button:nth-of-type(2) {
         margin-right: 2vw !important;
     }
+
+    footer {
+        left: 0;
+    }
+    .Growable textarea,
+    .Growable pre {
+        width: 95vw;
+    }
 }
 
 /*------------- global classes -------------*/
-.flex-container-y {
+.u-flexContainerY {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
 }
-
-.flex-container-x {
+.u-flexContainerX {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
     justify-content: center;
 }
-.flex-container-x-start {
+.u-flexContainerXStart {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: flex-start;
     justify-content: flex-start;
 }
-.btn-no-style {
+.Button--noStyle {
     background-color: inherit;
     border: none;
 }
-.clickable {
+.Button--clickable {
     cursor: pointer; 
     cursor: hand;
 }
-.invisible {
-    display: none;
+.u-visuallyHidden {
+    border: 0;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    display: inline-block;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+[tabindex]:focus .u-visuallyHidden.u-focusable, [tabindex]:hover .u-visuallyHidden.u-focusable, 
+.u-visuallyHidden.u-focusable:hover,
+.u-visuallyHidden.u-focusable:focus {
+    clip: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+
+    float: right;
+    background-image: url("../images/x-icon.png");
+    background-repeat: no-repeat;
+    background-size: 0.5rem 0.5rem;
+    padding: 0;
+    margin: 0.25rem;
+    outline: none;
+    border: none;
+    height: 0.5rem;
+    width: 0.5rem;
 }
