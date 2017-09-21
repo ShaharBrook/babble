@@ -438,18 +438,15 @@ window.Babble = {
                     window.addEventListener('load',UpdateTextArea);
                     area.addEventListener('input', function (e) {
                         UpdateTextArea();
-                        setTimeout(UpdateTextArea,100);
-                        setTimeout(UpdateTextArea,150);
-                        setTimeout(UpdateTextArea,200);
                     });
                     window.addEventListener('resize', function () {
                         UpdateTextArea();
-                        setTimeout(UpdateTextArea,100);
-                        setTimeout(UpdateTextArea,150);
-                        setTimeout(UpdateTextArea,200);
                     });
                     function UpdateTextArea() {
                         clone.textContent = area.value;
+                        //ExtraStuff();
+                    }
+                    function ExtraStuff() {
                         var totalHeight = document.querySelector('body').clientHeight;
                         var firstHeaderHeight = document.querySelector('body > header').clientHeight;
                         var mainHeaderHeight = document.querySelector('.Header--mainHeader').clientHeight;
