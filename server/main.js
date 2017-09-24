@@ -16,31 +16,31 @@ var server = http.createServer(function (request, response) {
         var URL = request.url;
         var method = request.method;
         if (!UrlExists(URL)) {
-            console.log('---- !!!!!!!!!!!stop!!!!!!!!!!!!!!! -----');
+            ;//console.log('---- !!!!!!!!!!!stop!!!!!!!!!!!!!!! -----');
             response.writeHead(404);
             response.end();
             return;
         }
-        console.log('--- requestCounter: ' + (requestCounter++) + " method: " + method + " URL: " + URL + ' ---');
+        ;//console.log('--- requestCounter: ' + (requestCounter++) + " method: " + method + " URL: " + URL + ' ---');
         if (method === 'GET') {
             var url = urlUtil.parse(request.url);
-            console.log('method = GET');
+            ;//console.log('method = GET');
             if (URL.startsWith('/messages')) { // handle getMessages
                 if (URL.startsWith('/messages?counter=')) {
                     var data = queryUtil.parse(url.query);
                     var c = data.counter;
                     var serverCounter = messages.getLength();
-                    console.log('handle getMessages(' + c + ')');
-                    console.log('clientCounter = ' + c + ' , serverCounter = ' + serverCounter);
+                    ;//console.log('handle getMessages(' + c + ')');
+                    ;//console.log('clientCounter = ' + c + ' , serverCounter = ' + serverCounter);
                     if (isNaN(c) || countInstances(URL, '=') !== 1) {
                         response.writeHead(400);
                         response.end();
                     } else if (c != serverCounter) {
-                        console.log('response with messages');
+                        ;//console.log('response with messages');
                         response.writeHead(200);
                         response.end(JSON.stringify(messages.getMessages2(c)));
                     } else {
-                        console.log('request is pushed');
+                        ;//console.log('request is pushed');
                         clients.push({
                             request: request,
                             response: response
@@ -51,7 +51,7 @@ var server = http.createServer(function (request, response) {
                     response.end();
                 }
             } else if (URL === '/stats') {
-                console.log('handle stats - push request');
+                ;//console.log('handle stats - push request');
                 clients.push({
                     request: request,
                     response: response
@@ -71,9 +71,9 @@ var server = http.createServer(function (request, response) {
                 requestBody += chunk.toString();
             });
             request.on('end', function () {
-                console.log('method = POST');
+                ;//console.log('method = POST');
                 if (URL === '/login') { // handle login
-                    console.log('handle login');
+                    ;//console.log('handle login');
                     users++;
                     FlushClients(false);
                     response.writeHead(200);
@@ -82,19 +82,19 @@ var server = http.createServer(function (request, response) {
                         messages: messages.getLength()
                     }));
                 } else if (URL === '/logout') { // handle logout
-                    console.log('handle logut');
+                    ;//console.log('handle logut');
                     users--;
                     FlushClients(false);
                     response.writeHead(200);
                     response.end(JSON.stringify('logout'));
                 } else if (URL === '/register') { // handle registration
-                    console.log('handle registration');
+                    ;//console.log('handle registration');
                     response.writeHead(200);
                     response.end(JSON.stringify('register'));
                 } else if (URL === '/messages') { // handle message
                     try {
                         var data = JSON.parse(requestBody);
-                        console.log('handle message');
+                        ;//console.log('handle message');
                         var message = {
                             name: data.name,
                             email: data.email,
@@ -121,25 +121,25 @@ var server = http.createServer(function (request, response) {
                 }
             });
         } else if (method === 'DELETE') {
-            console.log('!!!!!!!!!!!!!!!!!!got the DELETE request');
+            ;//console.log('!!!!!!!!!!!!!!!!!!got the DELETE request');
             if (URL.startsWith('/messages/')) {
-                console.log('handle delete');
+                ;//console.log('handle delete');
                 var data = URL.substring(10);
-                console.log('method = ' + method + ', data: ' + data);
-                console.log('isNaN(data): ' + isNaN(data));
+                ;//console.log('method = ' + method + ', data: ' + data);
+                ;//console.log('isNaN(data): ' + isNaN(data));
 
                 if (isNaN(data)) {
-                    console.log('------ ' + data + ' is Not A Number ' + isNaN(data));
+                    ;//console.log('------ ' + data + ' is Not A Number ' + isNaN(data));
                     response.writeHead(400);
                     response.end('false');
                 } else if (messages.doesIdExist(data)) {
-                    console.log('------ id ' + data + ' exists!');
+                    ;//console.log('------ id ' + data + ' exists!');
                     messages.deleteMessage(data);
                     FlushClients(true);
                     response.writeHead(200);
                     response.end('true');
                 } else {
-                    console.log('------ id ' + data + ' doesn\'t exist!');
+                    ;//console.log('------ id ' + data + ' doesn\'t exist!');
                     response.writeHead(200);
                     response.end('false');
                 }
@@ -150,11 +150,11 @@ var server = http.createServer(function (request, response) {
 
         }
         else if (method === 'OPTIONS') {
-            console.log('!!!!!!!!!!!!!!!!!got the OPTIONS request');
+            ;//console.log('!!!!!!!!!!!!!!!!!got the OPTIONS request');
             response.writeHead(204);
             response.end();
         } else {
-            console.log('ELSE: method = ' + method);
+            ;//console.log('ELSE: method = ' + method);
             response.writeHead(405);
             response.end();
         }
@@ -173,7 +173,7 @@ function FlushClients(isDelete, noChange) {
         var _url = urlUtil.parse(_request.url);
         var _URL = _request.url;
         var _data = queryUtil.parse(_url.query);
-        console.log('*** flush: ' + _URL);
+        ;//console.log('*** flush: ' + _URL);
         if (_URL.startsWith('/messages?counter=')) { // handle getMessages
             if (isDelete) {
                 _response.writeHead(200);
@@ -215,7 +215,7 @@ function countInstances(string, word) {
 }
 
 server.listen(9000);
-console.log('listening...');
+;//console.log('listening...');
 
 /**
  * MD5 Hashing

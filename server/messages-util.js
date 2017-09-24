@@ -17,7 +17,7 @@ function doesIdExist(id) {
     return messages.filter(x => x.id == id).length > 0;
 }
 function getLength() {
-    console.log('From Utils: messages.length = '+messages.length);
+    ;//console.log('From Utils: messages.length = '+messages.length);
     return messages.length;
 }
 function deleteMessage(id) {

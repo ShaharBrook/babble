@@ -106,6 +106,7 @@ describe('Client-Server', function () {
       server.respond();
       sinon.assert.calledWith(callback, { users: 5, messages: 20 });
     });
+    /*
     it('should issue DELETE /messages/44 ', function () {
       server.respondWith('DELETE', `${apiUrl}/messages/44`, JSON.stringify(true));
       let callback = sinon.spy();
@@ -120,6 +121,7 @@ describe('Client-Server', function () {
       server.respond();
       sinon.assert.calledWith(callback, {error: 400});
     });
+    */
   });
 });
 

@@ -73,6 +73,7 @@ main {
     padding: 5px 0;
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex: 1;
     background-color: #F6F6F6;
@@ -118,7 +119,9 @@ li > img {
 }
 /*message*/
 .Container--message {
-    max-width: 80%; /* todo - 600px max-width */
+    box-sizing: border-box;
+    max-width: 68vw; /* todo - 600px max-width */
+    word-wrap: break-word;
     float: left;
     background-color: #FFFFFF;
     border: solid 0.05rem #DADADA;
@@ -126,6 +129,18 @@ li > img {
     margin-left: 0.8vw;
     padding: 0.2rem 0.4rem;
 }
+@media screen and (max-width: 319px) {
+    .Container--message {
+
+        max-width: 60vw;
+    }
+}
+@media screen and (min-width: 857px) {
+    .Container--message {
+        max-width: 600px;
+    }
+}
+
 .Container--message:hover, .Container--message:focus{
     background-color: #EBEDEC;
     outline: none;
@@ -194,6 +209,10 @@ footer form {
 	overflow: visible;
 }
 
+.Growable textarea::placeholder {
+    font-style: italic;
+}
+
 /*
 footer textarea {
     box-sizing: border-box;
@@ -212,11 +231,11 @@ footer textarea:focus {
 }
 footer button {
     float: right;
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 6vh;
+    width: 6vh;
     padding: 0;
     margin-left: 1vw;
-    border-radius: 0.6rem;
+    border-radius: 3vh;
     background-image: url("../images/submit.png");
     background-size: cover;
     outline:none;
@@ -326,6 +345,9 @@ footer button:focus, footer button:hover {
         font-size: 3.5vmin;
         height: 5vmin;
     }
+    time {
+        display: inline-block;
+    }
     /*messages*/
     li img, li container {
         clear: both;
@@ -351,7 +373,12 @@ footer button:focus, footer button:hover {
     dl {
         margin: 0;    
         float: right;
-        height: 10vh;   
+        height: 10vh;
+
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
     }
     dt, dd {
         height: 3vmin;
