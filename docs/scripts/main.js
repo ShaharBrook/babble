@@ -160,31 +160,32 @@ window.Babble = {
                 e.preventDefault();
                 Babble.F.logout();
             });
-            
-            document.querySelector('.Section--login').style.display = 'none';
-            document.querySelector('footer textarea').removeAttribute('tabindex');
-            document.querySelector('footer button').removeAttribute('tabindex');
-            ;//console.log('start send messages!');
-            var form = document.querySelector('footer form');
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var message = {
-                    name: Babble.F.getLSBabble().userInfo.name,
-                    email: Babble.F.getLSBabble().userInfo.email,
-                    message: form.elements[0].value,
-                    timestamp: Date.now()
-                }
-                Babble.postMessage(message,
-                    function (data) {
-                        //var response = e.target.responseText;
-                        var id = data.id;
-                        ;//console.log('message got id: ' + id);
-                    });
-                var area = document.querySelector('footer textarea');
-                var span = document.querySelector('footer pre span');
-                span.innerHTML = '';
-                area.value = '';
-            });
+            if (document.querySelector('.Section--login')) {
+                document.querySelector('.Section--login').style.display = 'none';
+                document.querySelector('footer textarea').removeAttribute('tabindex');
+                document.querySelector('footer button').removeAttribute('tabindex');
+                ;//console.log('start send messages!');
+                var form = document.querySelector('footer form');
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var message = {
+                        name: Babble.F.getLSBabble().userInfo.name,
+                        email: Babble.F.getLSBabble().userInfo.email,
+                        message: form.elements[0].value,
+                        timestamp: Date.now()
+                    }
+                    Babble.postMessage(message,
+                        function (data) {
+                            //var response = e.target.responseText;
+                            var id = data.id;
+                            ;//console.log('message got id: ' + id);
+                        });
+                    var area = document.querySelector('footer textarea');
+                    var span = document.querySelector('footer pre span');
+                    span.innerHTML = '';
+                    area.value = '';
+                });
+            }
         },
         getRelevantFromBabble: function () {
             var babble = {
