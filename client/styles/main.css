@@ -12,9 +12,11 @@ body > header:first-of-type {
     height: 15%;
     background-color: #353744;
 }
+/*
 body > header:first-of-type > h1 {
     display: none;
 }
+*/
 body > header:first-of-type > img {
     margin: 1.5vh;
     max-width: 90%;
