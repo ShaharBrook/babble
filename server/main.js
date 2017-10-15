@@ -166,6 +166,7 @@ setInterval(function () {
     FlushClients(false, true);
 }, 30 * 1000);
 
+// this function answers the requests that haven't been answered yet
 function FlushClients(isDelete, noChange) {
     while (clients.length > 0) {
         var client = clients.pop();
