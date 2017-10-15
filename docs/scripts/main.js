@@ -53,12 +53,14 @@ window.Babble = {
         }, callback);
     },
     F: {
+        // user registers  
         Save: function () {
             var form = document.querySelector('.Section--login form');
             var data = Babble.F.serializeToJS(form);
             Babble.register(data);
             //Babble.F.SendMessages();
         },
+        // user registers as annonymous
         StayAnonymous: function () {
             Babble.register({
                 name: '',
@@ -66,12 +68,15 @@ window.Babble = {
             });
             //Babble.F.SendMessages();
         },
+        // returns the local storage item 'babble' as JSON object
         getLSBabble: function () {
             return JSON.parse(localStorage.getItem('babble'));
         },
+        // updates the local storage item 'babble' with the relevant fields from the global Babble
         UpdateLS: function () {
             localStorage.setItem('babble', JSON.stringify(Babble.F.getRelevantFromBabble()));
         },
+        // helping method that allows generating requests and testing the responses
         test: function (method, action, data, callback) {
             Babble.F.request2({
                 method: method,
@@ -79,9 +84,11 @@ window.Babble = {
                 data: data
             }, callback);
         },
+        // helping callback for the test function
         afterTest: function (data) {
-            ;//console.log('after test: ' + JSON.stringify(data));
+            console.log('after test: ' + JSON.stringify(data));
         },
+        // function that alerts the server on client leaving
         logout: function () {
             ;//console.log('logout');
             Babble.F.request2({
@@ -102,6 +109,7 @@ window.Babble = {
                 }
             });
         },
+        // this function recieves a list of messages and returns true if one of them repeats in the currents messages list
         timestampExsits: function (messages) {
             var curs = Babble.F.getCurrentMessages();
             for (var i = 0; i < messages.length; i++) {
@@ -114,6 +122,7 @@ window.Babble = {
             }
             return false;
         },
+        // callback for getMessages
         UpdateMessages: function (data) {
             /*
             var response = e.target.responseText;
@@ -122,9 +131,11 @@ window.Babble = {
             var messages = data;
             var counter = Babble.F.getCurrentMessages().length;
             if (messages.length == 1 && messages[0].noChange == 'noChange') {
+                // if there was no change in the messages list, simply poll again
                 Babble.getMessages(counter, Babble.F.UpdateMessages);
             } else {
                 if (counter != 1 && messages.length == 0) {
+                    // if there are no new messages, simply poll again
                     Babble.getMessages(counter, Babble.F.UpdateMessages);
                 } else {
                     if (Babble.F.isDelete(messages, counter)) { // handle delete
@@ -139,10 +150,11 @@ window.Babble = {
                 }
             }
         },
+        // callback for the delete function            
         AfterDelete: function (data) {
-            ;//console.log('--after delete');
             ;//console.log('--after delete: ' + JSON.stringify(data));
         },
+        // on page load, alerting the server on client page load
         login: function () {
             Babble.F.request2({
                 method: 'POST',
@@ -154,6 +166,7 @@ window.Babble = {
                 Babble.getStats(Babble.F.updateStatsPoll);
             });
         },
+        // activates event listener that sends messages to the server when the client wants to post them
         SendMessages: function () {
             Babble.F.login();
             window.addEventListener('beforeunload', function (e) {
@@ -187,6 +200,7 @@ window.Babble = {
                 });
             }
         },
+        // get relevants fields from global Babble
         getRelevantFromBabble: function () {
             var babble = {
                 currentMessage: Babble.currentMessage,
@@ -197,15 +211,18 @@ window.Babble = {
             }
             return babble;
         },
+        // updates the stats in the window
         updateStats: function (data) {
             document.querySelector('.Header--mainHeader dl > dd:first-of-type').innerHTML = data.messages;
             document.querySelector('.Header--mainHeader dl > dd:last-of-type').innerHTML = data.users;
         },
+        // callback for getStats
         updateStatsPoll: function (data) {
             var stats = data;
             Babble.F.updateStats(stats);
             Babble.getStats(Babble.F.updateStatsPoll);
         },
+        // gets the currents messages that are in this browser
         getCurrentMessages: function () {
             var res = [];
             var list = document.querySelectorAll('main ol li');
@@ -217,6 +234,7 @@ window.Babble = {
             }
             return res;
         },
+        // determines based on given messages and counter, if a delete operation occured
         isDelete: function (messages, counter) { // messages: new messages, counter: number of messages when the request was sent
             var n = messages.length;
             if (counter == 0) return false;
@@ -234,6 +252,7 @@ window.Babble = {
                 return true;
             }
         },
+        // allows delete buttons to appear
         DeleteButtons: function () {
             var list = document.querySelectorAll('main ol li');
             var i = 0;
@@ -252,6 +271,7 @@ window.Babble = {
                 Babble.deleteMessage(i, Babble.F.AfterDelete);
             };
         },
+        // requests the img url from the server
         SetImgSrc: function (li) {
             var name = li.querySelector('span.name').innerHTML;
             var email = li.querySelector('span.email').innerHTML;
@@ -303,6 +323,7 @@ window.Babble = {
             }
             Babble.F.DeleteButtons();
         },
+        // parsing the message to an html code in text
         MessageToString: function (message, isMe, isAnonymous, imgSrc) {
             var str = '<li class="u-flexContainerXStart"> '
                 + ' <img src="' + imgSrc + '" alt="" /> '
