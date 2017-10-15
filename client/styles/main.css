@@ -1,34 +1,47 @@
 /*------------- global -------------*/
-html, body {
+
+html,
+body {
     margin: 0;
     height: 100%;
     width: 100%;
 }
+
 * {
     font-family: 'Open Sans', sans-serif;
 }
+
+
 /*------------- header -------------*/
-body > header:first-of-type {
+
+body>header:first-of-type {
     height: 15%;
     background-color: #353744;
 }
+
+
 /*
 body > header:first-of-type > h1 {
     display: none;
 }
 */
-body > header:first-of-type > img {
+
+body>header:first-of-type>img {
     margin: 1.5vh;
     max-width: 90%;
     height: 80%;
 }
+
+
 /*------------- nav -------------*/
+
 nav {
     height: 85%;
     width: 18%;
     float: left;
     background-color: #61D290;
 }
+
 section.Section--mainSection {
     display: flex;
     flex-direction: column;
@@ -36,40 +49,52 @@ section.Section--mainSection {
     width: 82%;
     float: right;
 }
+
+
 /*------------- main header -------------*/
+
 .Header--mainHeader {
     width: 100%;
     background-color: #F6F6F6;
 }
 
-.Header--mainHeader > h1 {
+.Header--mainHeader>h1 {
     color: #3B3B3B;
     margin: 1vh 0;
     margin-left: 3.5vw;
     font-size: 3vh;
     font-weight: normal;
 }
+
 dl {
-    margin: 1vh 0;     
+    margin: 1vh 0;
     margin-left: 3.5vw;
     padding: 0;
 }
-dt, dd {
+
+dt,
+dd {
     display: block;
     margin: 0.5vh 0;
     height: 2vh;
 }
+
 dd {
     font-size: 2vh;
 }
+
 dt {
     padding: 0;
 }
-dt > img {
+
+dt>img {
     float: left;
     height: 100%;
 }
+
+
 /*------------- main -------------*/
+
 main {
     box-sizing: border-box;
     padding: 5px 0;
@@ -79,50 +104,77 @@ main {
     display: flex;
     flex: 1;
     background-color: #F6F6F6;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
+
+
 /*------------- messages -------------*/
+
+
 /*messages list*/
-main > ol {
+
+main>ol {
     height: 100%;
     clear: both;
-    list-style:none;
+    list-style: none;
     margin: 0;
     margin-left: 2.5vw;
     padding: 0;
 }
+
+
 /*styling the messages*/
+
 li {
-    clear: left; /*each message in a new line*/
-    margin-top: 1vh; /*space between the messages*/
+    clear: left;
+    /*each message in a new line*/
+    margin-top: 1vh;
+    /*space between the messages*/
 }
+
+
 /*avatar*/
 
-li > img {
+li>img {
     float: left;
-    border-radius: 50%; /*making the image round*/
+    border-radius: 50%;
+    /*making the image round*/
     height: 2.4rem;
     width: 2.4rem;
 }
+
+
 /*message author*/
-.Container--message > cite {
+
+.Container--message>cite {
     font-weight: bold;
 }
+
+
 /*message time*/
-.Container--message > time {
+
+.Container--message>time {
     font-size: 0.8rem;
     margin-left: 2vmin;
     color: #999999;
 }
+
+
 /*message content*/
-.Container--message > p {
+
+.Container--message>p {
     margin: 0;
-    margin-top: 0.25rem; /*space from the message metadata*/
+    margin-top: 0.25rem;
+    /*space from the message metadata*/
 }
+
+
 /*message*/
+
 .Container--message {
     box-sizing: border-box;
-    max-width: 68vw; /* todo - 600px max-width */
+    max-width: 68vw;
+    /* todo - 600px max-width */
     word-wrap: break-word;
     float: left;
     background-color: #FFFFFF;
@@ -131,23 +183,29 @@ li > img {
     margin-left: 0.8vw;
     padding: 0.2rem 0.4rem;
 }
+
 @media screen and (max-width: 319px) {
     .Container--message {
-
         max-width: 60vw;
     }
 }
+
 @media screen and (min-width: 857px) {
     .Container--message {
         max-width: 600px;
     }
 }
 
-.Container--message:hover, .Container--message:focus{
+.Container--message:hover,
+.Container--message:focus {
     background-color: #EBEDEC;
     outline: none;
 }
+
+
 /*delete icon*/
+
+
 /*
 button.delete-icon {
     float: right;
@@ -162,15 +220,21 @@ button.delete-icon {
     width: 0.5rem;
 }
 */
-button.delete-icon:hover, button.delete-icon:focus {
+
+button.delete-icon:hover,
+button.delete-icon:focus {
     outline: 0.02rem solid #7D9FD6 !important;
 }
+
+
 /*------------- footer -------------*/
+
 footer {
     width: 100%;
     background-color: #FFFFFF;
     border-top: solid 0.1vh #D9D9D9;
 }
+
 footer form {
     width: 100%;
     height: 100%;
@@ -179,41 +243,42 @@ footer form {
 }
 
 .Growable {
-	position: relative;
-	/*border: 1px solid;*/
-	overflow: hidden;
-	-webkit-scrollbar: red;
+    position: relative;
+    /*border: 1px solid;*/
+    overflow: hidden;
+    -webkit-scrollbar: red;
 }
 
 .Growable textarea,
 .Growable pre {
-	margin: 0;
+    margin: 0;
     padding: 0;
-	max-height: 300px;
-	/*padding: 7px;*/
+    max-height: 300px;
+    /*padding: 7px;*/
     width: 77vw;
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: inherit;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	padding: 0.5em;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 0.5em;
 }
 
 .Growable textarea {
-	width: 100%;
-	resize: none;
-	border: none;
-	
-	position: absolute;
-	top: 0; left: 0;
-	height: 100%;
-	overflow: visible;
+    width: 100%;
+    resize: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: visible;
 }
 
 .Growable textarea::placeholder {
     font-style: italic;
 }
+
 
 /*
 footer textarea {
@@ -228,9 +293,11 @@ footer textarea {
     resize: none;
 }
 */
+
 footer textarea:focus {
     outline: none;
 }
+
 footer button {
     float: right;
     height: 6vh;
@@ -240,12 +307,17 @@ footer button {
     border-radius: 3vh;
     background-image: url("../images/submit.png");
     background-size: cover;
-    outline:none;
+    outline: none;
 }
-footer button:focus, footer button:hover {
+
+footer button:focus,
+footer button:hover {
     border: 0.05rem solid black;
 }
+
+
 /*the login section*/
+
 .Section--login {
     top: 0;
     height: 100vh;
@@ -254,21 +326,25 @@ footer button:focus, footer button:hover {
     background-color: rgba(0, 0, 0, 0.5);
     margin-bottom: 50vh;
 }
+
 .Section--login form {
     background-color: #F9F9F9;
     padding: 1.7rem 1.5rem;
 }
+
 .Section--login h1 {
     color: #32333B;
     font-weight: normal;
     margin: 0;
     margin-bottom: 1rem;
 }
+
 .Section--login label {
-    color:#616161;
+    color: #616161;
     float: left;
     clear: left;
 }
+
 .Section--login input {
     width: 16.2rem;
     float: right;
@@ -279,15 +355,18 @@ footer button:focus, footer button:hover {
     margin-left: 0.4rem;
     border-radius: 0.5rem;
 }
+
 .Section--login input:focus {
     outline: none;
     border-color: blue;
 }
+
 .Section--login button {
     margin-top: 1rem;
     float: right;
     clear: both;
 }
+
 .Section--login button:first-of-type {
     float: right;
     background-color: #78D351;
@@ -295,15 +374,19 @@ footer button:focus, footer button:hover {
     padding: 0.1rem 1.3rem;
     border: none;
 }
+
 .Section--login label:first-of-type {
     margin-top: 0.3rem;
 }
+
 .Section--login label:nth-of-type(2) {
     margin-top: 1.85rem;
 }
+
 .Section--login input:nth-of-type(2) {
     margin-top: 1.1rem;
 }
+
 .Section--login button:nth-of-type(2) {
     margin-right: 0.4rem;
     background-color: #C1C1C1;
@@ -312,7 +395,9 @@ footer button:focus, footer button:hover {
     border: none;
 }
 
+
 /*------------- mobile design -------------*/
+
 @media screen and (max-width: 319px) {
     /*login section*/
     .Section--login h1 {
@@ -351,7 +436,8 @@ footer button:focus, footer button:hover {
         display: inline-block;
     }
     /*messages*/
-    li img, li container {
+    li img,
+    li container {
         clear: both;
         margin-top: 1vh;
     }
@@ -366,23 +452,23 @@ footer button:focus, footer button:hover {
     .Header--mainHeader {
         height: 10%;
     }
-    .Header--mainHeader > h1 {
+    .Header--mainHeader>h1 {
         float: left;
         margin-top: 3.5vh;
         margin-left: 3.5vw;
         margin-bottom: 0;
     }
     dl {
-        margin: 0;    
+        margin: 0;
         float: right;
         height: 10vh;
-
         display: -webkit-flex;
         display: flex;
         -webkit-align-items: center;
         align-items: center;
     }
-    dt, dd {
+    dt,
+    dd {
         height: 3vmin;
         display: inline-block;
         margin: 0;
@@ -401,14 +487,14 @@ footer button:focus, footer button:hover {
 }
 
 
-/*@media screen and (max-width: 1023px), screen and (max-height: 626px)*/
+
 @media screen and (max-width: 638px) and (min-width: 320px) {
     .Section--login button:nth-of-type(2) {
         margin-right: 0 !important;
     }
 }
 
-@media screen and (max-width: 638px) and (min-width: 320px) and (min-height: 627px) {
+@media screen and (max-width: 638px) and (min-width: 320px) {
     .Section--login button:nth-of-type(2) {
         margin-right: 2vw !important;
     }
@@ -421,19 +507,18 @@ footer button:focus, footer button:hover {
     }
 }
 
-
-@media screen and (max-width: 638px) and (min-width: 320px) and (max-height: 626px) {
+@media screen and (max-width: 638px) and (min-width: 320px) {
     nav {
         width: 0;
     }
     section.Section--mainSection {
         width: 100%;
     }
-    .Header--mainHeader, main, footer {
+    .Header--mainHeader,
+    main,
+    footer {
         width: 100%;
     }
-    
-    
     .Section--login h1 {
         font-size: 5vh;
         padding: 0;
@@ -469,7 +554,6 @@ footer button:focus, footer button:hover {
     .Section--login button:nth-of-type(2) {
         margin-right: 2vw !important;
     }
-
     footer {
         left: 0;
     }
@@ -479,33 +563,40 @@ footer button:focus, footer button:hover {
     }
 }
 
+
 /*------------- global classes -------------*/
+
 .u-flexContainerY {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
 }
+
 .u-flexContainerX {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
     justify-content: center;
 }
+
 .u-flexContainerXStart {
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: flex-start;
     justify-content: flex-start;
 }
+
 .Button--noStyle {
     background-color: inherit;
     border: none;
 }
+
 .Button--clickable {
-    cursor: pointer; 
+    cursor: pointer;
     cursor: hand;
 }
+
 .u-visuallyHidden {
     border: 0;
     -webkit-clip-path: inset(50%);
@@ -516,10 +607,12 @@ footer button:focus, footer button:hover {
     overflow: hidden;
     padding: 0;
     width: 1px;
-    white-space: nowrap; /* 1 */
+    white-space: nowrap;
+    /* 1 */
 }
 
-[tabindex]:focus .u-visuallyHidden.u-focusable, [tabindex]:hover .u-visuallyHidden.u-focusable, 
+[tabindex]:focus .u-visuallyHidden.u-focusable,
+[tabindex]:hover .u-visuallyHidden.u-focusable,
 .u-visuallyHidden.u-focusable:hover,
 .u-visuallyHidden.u-focusable:focus {
     clip: auto;
@@ -531,7 +624,6 @@ footer button:focus, footer button:hover {
     position: static;
     width: auto;
     white-space: inherit;
-
     float: right;
     background-image: url("../images/x-icon.png");
     background-repeat: no-repeat;
